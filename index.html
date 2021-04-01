@@ -33,16 +33,16 @@
         .then(response => response.text())
         .then(data => {
             arrayOfNames = JSON.parse(data);
-        });
-        console.log(arrayOfNames);
-        arrayOfNames.forEach(element => {
-            if(element.name[0].toLowerCase == event.target.text)
-            {
-                var name = document.createElement('div');
-                name.className="Name";
-                name.innerText = element.name;
-                document.body.append(name);
-            }
+            console.log(arrayOfNames);
+            arrayOfNames.forEach(element => {
+                if(element.name[0].toLowerCase == event.target.text)
+                {
+                    var name = document.createElement('div');
+                    name.className="Name";
+                    name.innerText = element.name;
+                    document.body.append(name);
+                }
+             });
         });
     }
     function createSelect(){
