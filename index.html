@@ -28,12 +28,13 @@
         arrayOfNameDivs.forEach(element => {
             element.parentNode.removeChild(elem);
         });
-        var arrayOfNames
+        var arrayOfNames;
         fetch('list.json')
         .then(response => response.text())
         .then(data => {
             arrayOfNames = JSON.parse(data);
         });
+        console.log(arrayOfNames);
         arrayOfNames.forEach(element => {
             if(element.name[0].toLowerCase == event.target.text)
             {
