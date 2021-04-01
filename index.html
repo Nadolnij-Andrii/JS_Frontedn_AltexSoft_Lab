@@ -23,7 +23,7 @@
         return lettersArray;
     }
     function createListOfNames(){
-        var arrayOfNameDivs = document.getElementsByClassName("Name");
+        var arrayOfNameDivs = document.getElementsByClassName("name");
         if(arrayOfNameDivs.length > 0)
         arrayOfNameDivs.forEach(element => {
             element.parentNode.removeChild(elem);
@@ -34,11 +34,12 @@
         .then(data => {
             arrayOfNames = JSON.parse(data);
             console.log(arrayOfNames);
+            var select = document.getElementById('letter-select');
             arrayOfNames.forEach(element => {
-                if(element.name[0].toLowerCase == event.target.text)
+                if(element.name[0].toLowerCase == select.options[select.selectedIndex].text)
                 {
                     var name = document.createElement('div');
-                    name.className="Name";
+                    name.className="name";
                     name.innerText = element.name;
                     document.body.append(name);
                 }
@@ -47,6 +48,7 @@
     }
     function createSelect(){
         var select = document.createElement('select');
+        select.id = "letter-select";
         select.onchange = createListOfNames();
         var lettersArray =  generateRandomCharactres();
         lettersArray.forEach(element => {
