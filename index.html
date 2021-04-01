@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Task</title>
+</head>
+<body onload="createSelect()">
+</body>
+</html>
+<script>
+    function generateRandomCharactres(){
+        var lettersArray = new Array();
+        var i = 0;
+        do{
+            var lettter = Math.random().toString(36).substring(2,3);
+            if(lettter.match(/[a-z]/i) && !lettersArray.includes(lettter)){
+                lettersArray.push(lettter);
+                i++;
+            }
+        }while(i<5)
+        return lettersArray;
+    }
+    function createListOfNames(){
+        var arrayOfNameDivs = document.getElementsByClassName("Name");
+        if(arrayOfNameDivs.length > 0)
+        arrayOfNameDivs.forEach(element => {
+            element.parentNode.removeChild(elem);
+        });
+        var arrayOfNames
+        fetch('list.json')
+        .then(response => response.text())
+        .then(data => {
+            arrayOfNames = JSON.parse(data);
+        });
+        arrayOfNames.forEach(element => {
+            if(element.name[0].toLowerCase == event.target.text)
+            {
+                var name = document.createElement('div');
+                name.className="Name";
+                name.innerText = element.name;
+                document.body.append(name);
+            }
+        });
+    }
+    function createSelect(){
+        var select = document.createElement('select');
+        select.onchange = createListOfNames();
+        var lettersArray =  generateRandomCharactres();
+        lettersArray.forEach(element => {
+            select.add(new Option(element));
+        });
+        document.body.append(select);
+    }
+</script>
