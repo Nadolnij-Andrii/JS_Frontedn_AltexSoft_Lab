@@ -36,7 +36,7 @@
             console.log(arrayOfNames);
             var select = document.getElementById('letter-select');
             arrayOfNames.forEach(element => {
-                if(element[0].name.toLowerCase == select.options[select.selectedIndex].text)
+                if(element.name[0].toLowerCase == select.options[select.selectedIndex].text)
                 {
                     var name = document.createElement('div');
                     name.className="name";
